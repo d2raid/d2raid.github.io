@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vow of the Disciple Symbols</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet">
+    <style>
+      body, button { font-family: 'Noto Serif KR', sans-serif; }
+      button { width: 350px; height: 150px; font-size: 50px; }
+      img { height: 350px; width: 350px }
+      #base { display: none; }
+      #answer { display: block; text-align: center; font-size: 50px; }
+      .container { display: flex; height: 1050px; width: 350px; border: solid 1px black; overflow: hidden; justify-content: center; align-items: center; flex-direction : column; }
+      .sel { display:block; }
+    </style>
+  </head>
+  <body style="display: flex;flex-direction: column;align-items: center;">
+    <div class="container">
+        <div id="q1" class="q"></div>
+        <div id="q2" class="q"></div>
+        <div id="q3" class="q"></div>
+    </div>
+    <div id="answer"><br><br><br></div>
+    <button onclick="generate()">Generate</button>
+    <button onclick="answer()">Answer</button>
+    <div id="base">
+    <div id="001">
+        <img src="검은심장.jpg">
+    </div>
+    <div id="002">
+        <img src="검은정원.jpg">
+    </div>
+    <div id="003">
+        <img src="경멸자.jpg">
+    </div>
+    <div id="004">
+        <img src="교감.jpg">
+    </div>
+    <div id="005">
+        <img src="군체.jpg">
+    </div>
+    <div id="006">
+        <img src="기억.jpg">
+    </div>
+    <div id="007">
+        <img src="목격자.jpg">
+    </div>
+    <div id="008">
+        <img src="벌레.jpg">
+    </div>
+    <div id="009">
+        <img src="빛.jpg">
+    </div>
+    <div id="010">
+        <img src="사랑.jpg">
+    </div>
+    <div id="011">
+        <img src="사바툰.jpg">
+    </div>
+    <div id="012">
+        <img src="살생.jpg">
+    </div>
+    <div id="013">
+        <img src="수호자.jpg">
+    </div>
+    <div id="014">
+        <img src="숭배.jpg">
+    </div>
+    <div id="015">
+        <img src="승천차원.jpg">
+    </div>
+    <div id="016">
+        <img src="애도.jpg">
+    </div>
+    <div id="017">
+        <img src="어둠.jpg">
+    </div>
+    <div id="018">
+        <img src="여행자.jpg">
+    </div>
+    <div id="019">
+        <img src="중단.jpg">
+    </div>
+    <div id="020">
+        <img src="증여.jpg">
+    </div>
+    <div id="021">
+        <img src="지구.jpg">
+    </div>
+    <div id="022">
+        <img src="진입.jpg">
+    </div>
+    <div id="023">
+        <img src="탑.jpg">
+    </div>
+    <div id="024">
+        <img src="피라미드.jpg">
+    </div>
+    <div id="025">
+        <img src="함대.jpg">
+    </div>
+    <div id="026">
+        <img src="흡입.jpg">
+    </div>
+    </div>
+    <div style="visibility:hidden;">검은심장정원경멸자교감군체기억목격자벌레빛사랑사바툰살생수호자숭배승천차원애도어둠여행자중단증여지구진입탑피라미드함대흡입</div>
+    <script>
+        var ids = [];
+        for (i=0;i<26;i++) { j = i+1; ids[i] = j.toString().padStart(3, '0'); }
+        function shuffle(array) { array.sort(() => Math.random() - 0.5); }
+        function generate() {
+            for(i=0;i<3;i++) { document.getElementById("base").appendChild(document.getElementById(ids[i])); }
+            document.getElementById("answer").innerHTML = "<br><br><br>";
+            shuffle(ids);
+            console.log(ids);
+            for(i=0;i<3;i++) { document.getElementById(`q${i+1}`).appendChild(document.getElementById(ids[i])); }
+        }
+        function answer() {
+            str = getName(0) + "<br>" + getName(1) + "<br>" + getName(2);
+            document.getElementById("answer").innerHTML = str;
+        }
+        function getName(idx) {
+            var el = document.getElementById(ids[idx]);
+            var text = el.firstElementChild.src.split("/").reverse()[0].replace(".jpg","");
+            var result = decodeURI(text);
+            return result;
+        }
+    </script>
+  </body>
+</html>
